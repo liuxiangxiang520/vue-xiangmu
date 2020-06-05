@@ -1,6 +1,8 @@
 <template>
 <div>
-
+    <h2>Search</h2>
+    <h3>keyword:{{$route.params.keyword}}</h3>
+    <h3>keyword2:{{$route.query.keyword2}}</h3>
 </div>
 </template>
 
@@ -10,7 +12,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 
 </style>
