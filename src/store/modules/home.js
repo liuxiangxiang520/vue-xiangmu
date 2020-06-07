@@ -6,18 +6,18 @@ export default {
         yyy:'dgdg'
     },
     mutations: {
-        test1 (state){
+        // test1 (state){
 
-        },
+        // },
         //接收保存分类列表
         RECEIVE_CATEGORY_LIST (state,categoryList) {
             state.categoryList = categoryList
         }
     },
     actions: {
-        test3({commit,state}){
+        // test3({commit,state}){
 
-        },
+        // },
         //请求获取分类列表的异步action
         async getCategoryList ({commit}) {
             const result = await reqCategoryList()
@@ -30,9 +30,9 @@ export default {
         }
     },
     getters: {
-        test4(state){
+        // test4(state){
 
-        }
+        // }
 
     }
 }

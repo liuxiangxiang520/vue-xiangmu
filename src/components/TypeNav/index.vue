@@ -196,7 +196,7 @@ export default {
                     }
 
                     &:hover {
-                        background-color: #fff;
+                        background-color: skyblue;
                         .item-list {
                             display: block;
                         }

@@ -8,9 +8,9 @@ import user from './modules/user'
 Vue.use(Vuex)
 
 const mutations = {
-    test2(state){
+    // test2(state){
 
-    }
+    // }
 
 }
 const actions = {}
