@@ -1,14 +1,19 @@
-import {reqCategoryList,reqBanners,reqFloors} from '@/api'
+import {reqCategoryList,reqBanners,reqFloors,reqRecommends} from '@/api'
 export default {
     state:{
         categoryList:[],//分类列表
         banners: [],//广告轮播列表
         floors:[],//楼层列表
+        recommends:[]//今日推荐列表
     },
     mutations: {
         // test1 (state){
 
         // },
+        //接收今天推荐mutation数据
+        RECEIVE_RECOMMENDS (state,recommends){
+            state.recommends = recommends
+        },
         //接收广告轮播列表
         RECEIVE_BANNERS (state,banners){
             state.banners = banners
@@ -26,6 +31,14 @@ export default {
         // test3({commit,state}){
 
         // },
+        //请求获取今日推荐的异步action
+        async getRecommends ({commit}) {
+            const result = await reqRecommends()
+            if (result.code===200) {
+              const recommends = result.data
+              commit('RECEIVE_RECOMMENDS', recommends)
+            }
+          },
         //请求获取广告列表的异步action
         async getBanners ({commit}) {
             const result = await reqBanners()
