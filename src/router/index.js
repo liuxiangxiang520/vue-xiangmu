@@ -31,4 +31,9 @@ VueRouter.prototype.replace = function(location,onComplete,onAbort) {
 export default new VueRouter({
     mode:'history',
     routes,
+    //路由跳转后，滚动条停留在最上面
+    scrollBehavior (to,from,savedPosition){
+        //期望滚动到哪个位置
+        return {x:0,y:0}
+    }
 })

@@ -121,7 +121,7 @@ export default {
                 order:'1:desc',//排序方式
 
                 pageNo:1,//页码
-                pageSize:5,//每页数量
+                pageSize:2,//每页数量
             }
         }
     },
