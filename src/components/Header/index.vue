@@ -15,7 +15,8 @@
             </div>
             <div class="typeList">
                 <a href="###">我的订单</a>
-                <a href="###">我的购物车</a>
+                <!-- <a href="###">我的购物车</a> -->
+                <router-link to="/shopcart"></router-link>
                 <a href="###">我的尚品汇</a>
                 <a href="###">尚品汇会员</a>
                 <a href="###">企业采购</a>
@@ -54,6 +55,12 @@ export default {
             keyword:''
         }
     },
+     mounted () {
+      // 在Header中: 通过事件总线对象绑定自定义事件监听, 在回调中删除输入数据
+      this.$bus.$on('removeKeyword', () => {
+        this.keyword = ''
+      })
+    },
     methods: {
         search (){
             const {keyword} = this
@@ -70,10 +77,34 @@ export default {
             // this.$router.push(location).catch(()=>{
                 
             // })
-            this.$router.push(location)
+            location.query = this.$route.query
+
+        // this.$router.push(location)  // 重复跳转招聘错误
+
+        // 使用的是vue-router3.1.0的语法(内部不会抛出错误的promise)
+        /* this.$router.push(location, () => {
+          console.log('跳转成功的回调')
+        }) */
+       
+        // 使用的是vue-router新的语法, 返回的是promise
+        /* this.$router.push(location).catch(() => {
+          // console.log('出错了')
+        }) */
+
+        // 如果当前没有在search, 用push, 否则用replace
+        // if (this.$route.name!=='search') {
+        if (this.$route.path.indexOf('/search')!==0) {  // 可能是/search/xxx
+          this.$router.push(location)
+        } else {
+          this.$router.replace(location)
         }
-    },
-}
+        
+        // this.$router.push(location, ()=> {})
+        // this.$router.replace(location, ()=> {})
+      }
+        }
+    }
+
 </script>
 
 <style lang="less" scoped>
