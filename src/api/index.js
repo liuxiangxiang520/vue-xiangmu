@@ -46,10 +46,24 @@ skuId: 商品的ID
 isChecked: 商品选中状态, '0'代表不选中, '1'代表选中
 /api/cart/checkCart/{skuId}/{isChecked} GET
 */
-export const reqCheckChartItem = (skuId, isChecked) => ajax.get(`/cart/checkCart/${skuId}/${isChecked}`)
+export const reqCheckCartItem = (skuId, isChecked) => ajax.get(`/cart/checkCart/${skuId}/${isChecked}`)
 
 /* 
 删除购物项商品
 /api/cart/deleteCart/{skuId} DELETE
 */
 export const reqDeleteCartItem = (skuId) => ajax.delete(`/cart/deleteCart/${skuId}`)
+
+//登录
+///api/user/passport/login
+export function reqLogin (mobile,password){
+    return ajax.post('/user/passport/login',{mobile,password})
+}
+
+//注册用户
+///api/user/passport/register POST
+export const reqRegister = (userInfo) => ajax.post('/user/passport/register',userInfo)
+
+//退出登录
+///api/user/passport/logout GET
+export const reqLogout = () => ajax.get('/user/passport/logout')

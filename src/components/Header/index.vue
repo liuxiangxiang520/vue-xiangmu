@@ -4,13 +4,16 @@
     <div class="top">
         <div class="container">
             <div class="loginList">
-                <p>尚品汇欢迎您！</p>
-                <p>
+               <p>尚品汇欢迎您！</p>
+                <p v-if="userInfo.token">
+                    <span>{{userInfo.name}}</span> &nbsp;&nbsp;
+                    <a href="javascript:">退出</a>
+                </p>
+                <p v-else>
                     <span>请</span>
-                    <router-link to="/login">登录</router-link>
-                    <!-- <a href="###">登录</a> -->
+                    <!-- <router-link to="/login">登录</router-link> -->
+                    <router-link :to="{path: '/login'}">登录</router-link>
                     <router-link to="/register" class="register">免费注册</router-link>
-                    <!-- <a href="###" class="register">免费注册</a> -->
                 </p>
             </div>
             <div class="typeList">
@@ -39,6 +42,7 @@
         <div class="searchArea">
             <form action="###" class="searchForm" @submit.prevent="search">
                 <input type="text" id="autocomplete" class="input-error input-xxlarge" v-model="keyword"/>
+                <!-- <button class="sui-btn btn-xlarge btn-danger" @click.prevent="search">搜索</button> -->
                 <button class="sui-btn btn-xlarge btn-danger">搜索</button>
             </form>
         </div>
